@@ -1,0 +1,64 @@
+# SmartFlow AI Configuration
+# Copy this file to config.yaml and fill in your API keys
+
+# LLM Configuration
+llm:
+  provider: "openai"  # "openai" or "anthropic"
+  model: "gpt-4"      # "gpt-4", "gpt-3.5-turbo", "claude-3-opus", etc.
+  temperature: 0.7
+  max_tokens: 1000
+  api_key: "${OPENAI_API_KEY}"  # Will use environment variable if not set
+
+# Alternative Anthropic config
+# llm:
+#   provider: "anthropic"
+#   model: "claude-3-opus-20240229"
+#   temperature: 0.7
+#   max_tokens: 1000
+#   api_key: "${ANTHROPIC_API_KEY}"
+
+# API Integration Configuration
+apis:
+  # GitHub API
+  github_token: "${GITHUB_TOKEN}"
+
+  # Shopify API
+  shopify_token: "${SHOPIFY_TOKEN}"
+  shopify_store: "your-store.myshopify.com"
+
+  # Slack
+  slack_webhook_url: "${SLACK_WEBHOOK_URL}"
+  slack_bot_token: "${SLACK_BOT_TOKEN}"
+
+  # CRM (Salesforce, HubSpot, etc.)
+  crm_api_key: "${CRM_API_KEY}"
+  crm_base_url: "https://api.crm-system.com"
+
+  # Database (if needed for storage)
+  database_url: "${DATABASE_URL}"
+
+# Monitoring Configuration
+monitoring:
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_file: "smartflow.log"
+  enable_metrics: true
+  metrics_influx_url: "${INFLUX_URL}"
+
+# Workflow Configuration
+workflow:
+  default_timeout: 30.0
+  max_retries: 3
+  continue_on_error: false
+  parallel_execution: false
+
+# Security Configuration
+security:
+  encrypt_api_keys: true
+  validate_https: true
+  store_secrets_securely: true
+
+# Development Configuration
+development:
+  dry_run: false
+  mock_apis: false
+  llm_cache_enabled: true
